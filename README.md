@@ -125,7 +125,7 @@ This project is proprietary software. All rights reserved by Vijay Vairagade.
 
 ## Changelog
 
-### Version 1.0 (2025-01-20)
+### Version 1.0 (2025-07-26)
 - Initial release
 - Basic WiFi password extraction functionality
 - Save to current working directory
