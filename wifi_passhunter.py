@@ -4,12 +4,6 @@ import re
 from datetime import datetime
 
 def get_wifi_profiles():
-    """
-    Retrieve all WiFi profiles from the system.
-
-    Returns:
-        list: List of WiFi profile names
-    """
     try:
         output = subprocess.check_output(['netsh', 'wlan', 'show', 'profiles']).decode('utf-8', errors="ignore")
         profile_names = re.findall(r'All User Profile\s*: (.*)', output)
@@ -19,15 +13,6 @@ def get_wifi_profiles():
         return []
 
 def get_wifi_password(profile_name):
-    """
-    Get the password for a specific WiFi profile.
-
-    Args:
-        profile_name (str): Name of the WiFi profile
-
-    Returns:
-        str or None: Password if found, None otherwise
-    """
     try:
         output = subprocess.check_output(
             ['netsh', 'wlan', 'show', 'profile', profile_name, 'key=clear']
@@ -39,9 +24,6 @@ def get_wifi_password(profile_name):
         return None
 
 def print_banner():
-    """
-    Print merged ASCII art banner with copyright.
-    """
     banner = r"""
 ╔══════════════════════════════════════════════════════════════════════════════════╗
 ║                         WiFi PassHunter - Password Extractor                    ║
@@ -57,9 +39,6 @@ def print_banner():
     print(banner)
 
 def save_wifi_passwords():
-    """
-    Main function to extract and save WiFi passwords to current working directory.
-    """
     print_banner()
 
     wifi_profiles = get_wifi_profiles()
